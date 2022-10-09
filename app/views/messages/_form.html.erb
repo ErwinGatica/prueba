@@ -1,0 +1,10 @@
+<%= form_with model: message do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %> <br>
+    <%= form.label :content %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <%= form.submit "save" %>
+<% end %>

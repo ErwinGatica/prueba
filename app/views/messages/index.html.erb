@@ -1,0 +1,13 @@
+
+<h1>Artículos</h1>
+
+<div id="messages">
+  <% @messages.each do |article| %>
+    <%= article.title %>
+    <p>
+      <%= link_to "Ver", article %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Atrás", root_path %>

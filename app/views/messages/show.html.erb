@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>
+  <center>  <%= @message.title%> </center>
+</h1>
+<p>
+  <%= @message.content%>
+</p>
+
+<% render @message %>
+
+
+<div>
+  <%= link_to "Edit", edit_message_path(@message) %> |
+  <%= link_to "Volver atrás", root_path %>
+
+  <%= button_to "Destroy", @message, method: :delete %>
+</div>

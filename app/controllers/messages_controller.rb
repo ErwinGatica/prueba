@@ -2,6 +2,14 @@ class MessagesController < ApplicationController
   before_action :set_message, only: %i[ show edit update destroy ]
   skip_before_action :authenticate_user!
 
+  def carousel
+    @messages= Messages.all
+  end
+
+  def home
+    @messages = Message.all
+  end
+
   def index
     @messages = Message.all
   end
@@ -55,6 +63,6 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.require(:message).permit(:title, :content)
+      params.require(:message).permit(:title, :content, photos: [])
     end
 end

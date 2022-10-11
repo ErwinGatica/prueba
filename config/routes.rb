@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root to: "messages#home"
 
   resources :messages
+  get "canopy", to: "messages#canopy"
+
 end

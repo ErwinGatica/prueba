@@ -19,6 +19,8 @@
 @import "config/bootstrap_variables";
 
 @import "bootstrap/scss/bootstrap"; /* picks it up in node_modules! */
+@import "font-awesome";
+
 
 @import "actiontext";
 @import "components/index";

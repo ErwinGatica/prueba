@@ -1,7 +1,9 @@
+
+<div class="container">
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
   <% counter = 0 %>
-  <div class="carousel-inner">
+  <div class="carousel-inner card-carousel">
     <% @messages.each do |message| %>
       <% message.photos.each do |photo| %>
         <% if counter == 0 %>
@@ -26,4 +28,6 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+</div>
+
 </div>

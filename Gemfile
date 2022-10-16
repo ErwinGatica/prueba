@@ -30,9 +30,13 @@ gem "jbuilder"
 
 gem "cloudinary"
 
-gem "sassc-rails"
-
 gem 'webpacker', '~> 5.4', '>= 5.4.3'
+
+gem "font-awesome-sass", "~> 6.1"
+
+gem 'devise', '~> 4.8', '>= 4.8.1'
+
+# gem 'humanize', '~> 2.5', '>= 2.5.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -51,6 +55,7 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 # gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"

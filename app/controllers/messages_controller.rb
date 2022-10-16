@@ -2,22 +2,37 @@ class MessagesController < ApplicationController
   before_action :set_message, only: %i[ show edit update destroy ]
   skip_before_action :authenticate_user!
 
+  def about
+
+  end
+
+  def geolocation
+
+  end
+
+  def customized
+
+  end
   def carousel
-    @messages= Messages.all
+
   end
 
   def home
-    @messages = Message.all
+
   end
 
   def index
-    @messages = Message.all
+
   end
 
   def new
     @message = Message.new
+
   end
 
+  def show
+
+  end
 
   def edit
 
@@ -38,7 +53,7 @@ class MessagesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @message.update(message_params)
+      if @message.update(message_params_update)
         format.html { redirect_to message_url(@message), notice: "Article was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,5 +79,9 @@ class MessagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def message_params
       params.require(:message).permit(:title, :content, photos: [])
+    end
+
+    def message_params_update
+      params.require(:message).permit(:title, :content)
     end
 end

@@ -1,22 +1,72 @@
-<div>
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid ">
-      <%= link_to "Turismo", root_path, class: "navbar-brand"%>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag 'logooo.png' %>
+      Horizonte Turismo
+    <% end %>
+
+    <% unless user_signed_in? %>
+      <%= link_to new_user_session_path, class:"btn btn-secondary-100 btn-sm user-icon" do %>
+        <i class="fa-solid fa-user"></i>
+      <%end%>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% @messages.each do |m| %>
+        <li class="nav-item">
+          <%=link_to "#{m.title.capitalize}", m, class:"nav-link"%>
+        </li>
+        <%end%>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <% button_to 'Admin', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Crear un nuevo artículo", new_message_path, class: "dropdown-item" %>
+              <%= link_to "Editar artículos", messages_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <% link_to "Nosotros", about_path, class: "nav-link" %>
+          <%= link_to about_path, class:"nav-link" do %>
+            <i class="fa-solid fa-people-group btn btn-secondary-100 btn-sm"></i>
+            Nosotros
+          <%end%>
           </li>
           <li class="nav-item">
-            <%= link_to "Canopy", canopy_path, class: "nav-link"%>
+          <% link_to geolocation_path, class:"nav-link" do %>
+            <i class="fa-solid fa-location-dot btn btn-secondary-100 btn-sm"></i>
+            Geolocation
+          <%end%>
+          </li>
+          <li class="nav-item">
+          <%= link_to customized_path, class:"nav-link" do %>
+            <i class="fa-solid fa-car-side btn btn-secondary-100 btn-sm"></i>
+            Servicios personalizados
+          <%end%>
 
           </li>
-        </ul>
-      </div>
+
+        <% end %>
+      </ul>
     </div>
-  </nav>
 
+  </div>
 </div>

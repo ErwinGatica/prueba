@@ -1,0 +1,40 @@
+.card-carousel {
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .card-carousel {
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .card-carousel {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+}

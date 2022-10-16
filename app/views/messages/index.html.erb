@@ -2,11 +2,12 @@
 <h1>Artículos</h1>
 
 <div id="messages">
-  <% @messages.each do |article| %>
-    <%= article.title %>
+  <% @messages.each do |message| %>
+    <%= message.title %>
     <p>
-      <%= link_to "Ver", article %>
+      <%= link_to "Ver", message %>
     </p>
+
   <% end %>
 </div>
 

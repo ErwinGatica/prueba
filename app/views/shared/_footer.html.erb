@@ -1,0 +1,24 @@
+<br>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+  </div>
+  <div class="footer-contact">
+    <a href="#"><i class="fa-solid fa-phone"></i></a> <br>
+    <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+  </div>
+  <center>
+    <% @images.each do |f| %>
+      <%  if f.title == "marca"%>
+        <% f.title%>
+        <%= cl_image_tag f.photo.key, crop: :fill %>
+      <%  end%>
+    <% end %>
+ </center>
+  <div class="footer-copyright">
+    Made by Stairway SpA
+  </div>
+</div>

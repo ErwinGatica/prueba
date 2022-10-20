@@ -1,14 +1,23 @@
+<div class="container">
+  <h1>Artículos</h1>
 
-<h1>Artículos</h1>
+  <div class="alert alert-light" role="alert">
+    <li>Cada artículo debe llevar una imagen asociada para que se agregue a la página principal.</li> <br>
+    <li>Los artículos sin imagen, se utilizarán para posterior edición de los botones en pie de página.</li> <br>
+    <li>Los artículos con título  e imagen, pero sin contenido, se utilizarán para hacer el logo y la firma editables,</li>
+  </div>
 
-<div id="messages">
-  <% @messages.each do |message| %>
-    <%= message.title %>
-    <p>
-      <%= link_to "Ver", message %>
-    </p>
+<%= link_to "Atrás", root_path, class:"btn btn-primary" %>
 
-  <% end %>
+  <div id="messages">
+    <% @messages.each do |message| %>
+      <% if policy(message).show?%>
+      <%= message.title %>
+      <p>
+        <%= link_to "Ver", message %>
+      </p>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
-
-<%= link_to "Atrás", root_path %>

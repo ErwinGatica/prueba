@@ -1,20 +1,33 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>
-  <center>  <%= @message.title %> </center>
+  <center><%= @message.title %></center>
 </h1>
+<% @message.photos.each do |photo| %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+
+  </div>
+<% end %>
+
 <p>
   <%= @message.content%>
 </p>
 
-<% @message.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+
+
+
 
 
 <div>
-  <%= link_to "Edit", edit_message_path(@message) %> |
-  <%= link_to "Volver atrás", root_path %>
+  <% if user_signed_in?%>
+    <% if policy(@message).edit?%>
+      <%= link_to "Edit", edit_message_path(@message), class:"btn btn-primary" %> |
+    <%end%>
+    <% if policy(@message).destroy?%>
+      <%= link_to "Destroy", @message, method: :delete, class:"btn btn-primary" %> |
+    <%end%>
+  <%end%>
+  <%= link_to "Volver atrás", root_path, class:"btn btn-primary" %>
 
-  <%= button_to "Destroy", @message, method: :delete %>
+
 </div>

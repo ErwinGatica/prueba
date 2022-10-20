@@ -28,13 +28,15 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem "cloudinary"
+gem 'cloudinary', '~> 1.23'
 
 gem 'webpacker', '~> 5.4', '>= 5.4.3'
 
 gem "font-awesome-sass", "~> 6.1"
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
+
+gem 'pundit', '~> 2.2'
 
 # gem 'humanize', '~> 2.5', '>= 2.5.1'
 
@@ -72,6 +74,10 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem 'better_errors', '~> 2.9', '>= 2.9.1'
+
+  gem 'binding_of_caller', '~> 1.0'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

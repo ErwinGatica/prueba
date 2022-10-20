@@ -1,24 +1,18 @@
 <br>
 <div class="footer">
   <div class="footer-links">
-    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-  </div>
-  <div class="footer-contact">
-    <a href="#"><i class="fa-solid fa-phone"></i></a> <br>
-    <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+    <a target="_blank" href="https://www.youtube.com"><i class="fa-brands fa-youtube"></i></a>
+    <a target="_blank" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+    <a target="_blank" href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+    <a target="_blank" href="https://www.tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
   </div>
   <center>
-    <% @images.each do |f| %>
-      <%  if f.title == "marca"%>
-        <% f.title%>
-        <%= cl_image_tag f.photo.key, crop: :fill %>
-      <%  end%>
-    <% end %>
+<div>
+  <%= image_tag 'marca-pie.png', crop: :fill, width:'100px' %>
+
+</div>
  </center>
   <div class="footer-copyright">
-    Made by Stairway SpA
+    Hecho por Stairway SpA
   </div>
 </div>

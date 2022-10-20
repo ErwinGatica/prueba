@@ -8,6 +8,11 @@
     <%= csp_meta_tag %>
     <%= favicon_link_tag asset_path('logooo.png') %>
 
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    </style>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
@@ -15,6 +20,7 @@
 
   <body>
     <%= render "shared/navbar" %>
+    <% render "shared/flashes" %>
 
     <%= yield %>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

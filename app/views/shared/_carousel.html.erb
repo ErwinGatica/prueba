@@ -1,21 +1,24 @@
 
 <div class="container">
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
   <% counter = 0 %>
   <div class="carousel-inner card-carousel">
     <% @messages.each do |message| %>
-      <% message.photos.each do |photo| %>
-        <% if counter == 0 %>
-          <div class="carousel-item active">
-          <%= cl_image_tag photo.key, class:"d-block w-100", alt:"1..." %>
-          </div>
-        <% else %>
-          <div class="carousel-item">
-          <%= cl_image_tag photo.key, class:"d-block w-100", alt:"2..." %>
-          </div>
-        <% end %>
-        <% counter = counter + 1 %>
+    <% unless message.content.nil?%>
+        <% message.photos.each do |photo| %>
+
+          <% if counter == 0 %>
+            <div class="carousel-item active">
+            <%= cl_image_tag photo.key, class:"d-block w-100", alt:"1..." %>
+            </div>
+          <% else %>
+            <div class="carousel-item">
+            <%= cl_image_tag photo.key, class:"d-block w-100", alt:"2..." %>
+            </div>
+          <% end %>
+          <% counter = counter + 1 %>
+        <%end%>
       <%end%>
     <%end%>
   </div>

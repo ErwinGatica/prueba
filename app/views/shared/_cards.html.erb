@@ -1,73 +1,142 @@
 
 
-<% counter = 0%>
-  <div class="container">
+<% counter = 1%>
+  <div>
     <% @messages.each do |article| %>
-      <% if counter == 0 %>
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <% article.photos.each do |photo| %>
-                <div class="container">
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <%= article.title.capitalize %>
-                  </div>
+      <% unless article.photos.nil? || article.title == "Location"%>
+        <% unless counter > 3 %>
+          <% if counter == 1 %>
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <% article.photos.each do |photo| %>
+                    <div class="container">
+                      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <%= article.title.capitalize %>
+                      </div>
+                    </div>
+                  <%end%>
+                </h2>
+              </div>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <center><% article.title.capitalize %></center>
+                  <%= article.content%>
+                  <% link_to "Ver", article %>
                 </div>
-              <%end%>
-            </h2>
-          </div>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <%= article.content%>
-              <% link_to "Ver", article %>
+              </div>
             </div>
-          </div>
-        </div>
-        <br>
-      <% elsif counter.even? %>
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <% article.photos.each do |photo| %>
-                <div class="container">
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <%= article.title.capitalize %>
-                  </div>
+            <br>
+          <% elsif counter == 2 %>
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <% article.photos.each do |photo| %>
+                    <div class="container">
+                      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <%= article.title.capitalize %>
+                      </div>
+                    </div>
+                  <%end%>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <%= article.content%>
+                  <% link_to "Ver", article %>
                 </div>
-              <%end%>
-            </h2>
-          </div>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <%= article.content%>
-              <% link_to "Ver", article %>
+              </div>
             </div>
-          </div>
-        </div>
-        <br>
-      <% else%>
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <% article.photos.each do |photo| %>
-                <div class="container">
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    <%= article.title.capitalize %>
-                  </div>
+            <br>
+          <% else%>
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <% article.photos.each do |photo| %>
+                    <div class="container">
+                      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <%= article.title.capitalize %>
+                      </div>
+                    </div>
+                  <%end%>
+                </h2>
+              </div>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <%= article.content%>
+                  <% link_to "Ver", article %>
                 </div>
-              <%end%>
-            </h2>
-          </div>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <%= article.content%>
-              <% link_to "Ver", article %>
+              </div>
             </div>
-          </div>
-        </div>
-        <br>
-      <% end %>
-      <% counter = counter + 1%>
+            <br>
+          <% end %>
+          <% counter = counter + 1%>
+        <%else%>
+          <%if counter == 4%>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <% article.photos.each do |photo| %>
+                    <div class="container">
+                      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <%= article.title.capitalize %>
+                      </div>
+                    </div>
+                  <%end%>
+                </h2>
 
-    <% end %>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <%= article.content%>
+                    <% link_to "Ver", article %>
+                  </div>
+                </div>
+              </div>
+              <br>
+          <% elsif counter == 5%>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+
+
+
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+
+                  <div class="accordion-body">
+                    <%= article.content%>
+                    <% link_to "Ver", article %>
+                  </div>
+
+                </div>
+              </div>
+              <br>
+          <% else %>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+
+                  <% article.photos.each do |photo| %>
+                    <div class="container">
+                      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        <%= article.title.capitalize %>
+                      </div>
+                    </div>
+                  <%end%>
+
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+
+                  <div class="accordion-body">
+                    <%= article.content%>
+                    <% link_to "Ver", article %>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <br>
+          <%end%>
+          <% counter = counter + 1%>
+        <% end %>
+      <% end %>
+    <%end%>
   </div>

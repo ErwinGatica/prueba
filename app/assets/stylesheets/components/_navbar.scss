@@ -8,16 +8,79 @@
   flex-grow: 0;
 }
 
+.navbar-lewagon .navbar-brand {
+  min-width: 10px;
+  max-width: 70px;
+
+}
 .navbar-lewagon .navbar-brand img {
-  width: 70px;
+  min-width: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.container-email {
+  font-family: 'Lobster', cursive;
+
+}
+
+// Smallest device5
+@media (min-width: 100px) and (max-width: 575px) {
+  .container-email {
+    font-size: large;
+  }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .container-email {
+    font-size: medium;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .container-email {
+    font-size: large;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .container-email {
+    font-size: x-large;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .container-fluid {
+    justify-content: space-between;
+  }
 }
 
 .user-icon {
   position: absolute;
   right: 0;
   top: 0;
-  color: rgb(201, 157, 92);
+  color: rgb(187, 189, 81);
   opacity: 0.85;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 10px;
+}
+
+.footer-contact a {
+  position: absolute;
+  top: 1px;
+  right: 40px;
+  color: rgb(165, 132, 82);
+  opacity: 0.85;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 2px;
+}
+
+.fa-location-dot {
+  margin-left: 10px;
 }

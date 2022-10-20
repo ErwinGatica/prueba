@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "messages#home"
 
-  resources :messages, path: :article
+  resources :messages, path: :articles
 
   get "about", to: "messages#about"
   get "geolocation", to: "messages#geolocation"

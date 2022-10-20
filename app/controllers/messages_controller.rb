@@ -1,8 +1,9 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: %i[ home about geolocation customized show carousel]
 
   def about
+    authorize @messages
 
   end
 
@@ -11,23 +12,26 @@ class MessagesController < ApplicationController
   end
 
   def customized
-
+    authorize @messages
   end
-  def carousel
 
-  end
 
   def home
-
+    authorize @messages
   end
 
   def index
+      @messages = policy_scope(Message)
 
   end
 
   def new
-    @message = Message.new
-
+    if current_user.admin
+      @message = Message.new
+      authorize @message
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -40,7 +44,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-
+    @message.user = current_user
+    authorize @message
     respond_to do |format|
       if @message.save
         format.html { redirect_to message_url(@message), notice: "message was successfully created." }
@@ -53,7 +58,7 @@ class MessagesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @message.update(message_params_update)
+      if @message.update(message_params)
         format.html { redirect_to message_url(@message), notice: "Article was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -74,14 +79,11 @@ class MessagesController < ApplicationController
 
     def set_message
       @message = Message.find(params[:id])
+      authorize @message
     end
 
     # Only allow a list of trusted parameters through.
     def message_params
       params.require(:message).permit(:title, :content, photos: [])
-    end
-
-    def message_params_update
-      params.require(:message).permit(:title, :content)
     end
 end
